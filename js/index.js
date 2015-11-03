@@ -12,7 +12,10 @@ var insults = [
   "shit",
   "fucker",
   "bitch",
-  "twat"
+  "twat",
+  "cockmonkey",
+  "jizz guzzler",
+  "pugfaced nob"
 ];
 
 function randomFrom(array) {
