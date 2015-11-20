@@ -1,22 +1,20 @@
+$primary: #676767;
 body {
   font-family: 'Roboto', sans-serif;
-  color: #414141;
+  color: darken($primary,15%);
   text-align: center;
   background: #111;
   background-size: cover;
   padding: 100px;
-}
-@media (max-width: 768px) {
-  body {
+  @media (max-width: 768px) {
     padding: 20px;
   }
 }
-
 #face {
   font-size: 172px;
   background: url(https://c1.staticflickr.com/5/4107/5412347913_88fc08488b_b.jpg) no-repeat;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: cover;
-  text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);
+  text-shadow: 2px 2px 15px rgba(0,0,0,0.6);
 }

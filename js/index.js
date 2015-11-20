@@ -1,69 +1,101 @@
-$.urlParam = function(name){
-    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-    if (results==null){
-       return null;
-    }
-    else{
-       return results[1] || 0;
+function updateTime() {
+  var dt = new Date();
+  var hours = dt.getHours(),
+      mins = dt.getMinutes(),
+      secs = dt.getSeconds();
+  
+  var toHour = '';
+  if (hours == 0) {toHour = ' ONE'}
+  if (hours == 1 || hours == 13) {toHour = ' TWO'}
+  if (hours == 2 || hours == 14) {toHour = ' THREE'}
+  if (hours == 3 || hours == 15) {toHour = ' FOUR'}
+  if (hours == 4 || hours == 16) {toHour = ' FIVE'}
+  if (hours == 5 || hours == 17) {toHour = ' SIX'}
+  if (hours == 6 || hours == 18) {toHour = ' SEVEN'}
+  if (hours == 7 || hours == 19) {toHour = ' EIGHT'}
+  if (hours == 8 || hours == 20) {toHour = ' NINE'}
+  if (hours == 9 || hours == 21) {toHour = ' TEN'}
+  if (hours == 10 || hours == 22) {toHour = ' ELEVEN'} 
+  if (hours == 11 || hours == 23) {toHour = ' TWELVE'}
+  if (hours == 12) {toHour = ' ONE'}
+
+  var pastHour = '';
+  if (hours == 0) {pastHour = ' ONE'}
+  if (hours == 1 || hours == 13) {pastHour = ' ONE'}
+  if (hours == 2 || hours == 14) {pastHour = ' TWO'}
+  if (hours == 3 || hours == 15) {pastHour = ' THREE'}
+  if (hours == 4 || hours == 16) {pastHour = ' FOUR'}
+  if (hours == 5 || hours == 17) {pastHour = ' FIVE'}
+  if (hours == 6 || hours == 18) {pastHour = ' SIX'}
+  if (hours == 7 || hours == 19) {pastHour = ' SEVEN'}
+  if (hours == 8 || hours == 20) {pastHour = ' EIGHT'}
+  if (hours == 9 || hours == 21) {pastHour = ' NINE'}
+  if (hours == 10 || hours == 22) {pastHour = ' TEN'} 
+  if (hours == 11 || hours == 23) {pastHour = ' ELEVEN'}
+  if (hours == 12) {pastHour = ' TWELVE'}
+  
+  var result = "IT'S";
+  
+  if (mins >= 0 && mins <= 4) {result += pastHour + " O'CLOCK"}
+  if (mins > 4 && mins <= 9) {result += " 5 PAST" + pastHour}
+  if (mins > 9 && mins <= 14) {result += " TEN PAST" + pastHour}
+  if (mins > 14 && mins <= 19) {result += " QUARTER PAST" + pastHour}
+  if (mins > 19 && mins <= 24) {result += " TWENTY PAST" + pastHour}
+  if (mins > 24 && mins <= 29) {result += " TWENTY-FIVE PAST" + pastHour}
+  if (mins > 29 && mins <= 34) {result += " HALF PAST" + pastHour}
+  if (mins > 34 && mins <= 39) {result += " TWENTY-FIVE TO" + toHour}
+  if (mins > 39 && mins <= 44) {result += " TWENTY TO" + toHour}
+  if (mins > 44 && mins <= 49) {result += " QUARTER TO" + toHour}
+  if (mins > 49 && mins <= 54) {result += " TEN TO" + toHour}
+  if (mins > 54 && mins <= 59) {result += " FIVE TO" + toHour}
+  
+  var tagline = '';
+  if (hours === 1) {tagline = ', YOU SHOULD PROBABLY SLEEP.'}
+  if (hours === 2) {tagline = ', SERIOUSLY, WHY ARE YOU STILL AWAKE.'}
+  if (hours === 3) {tagline = ', HOW WAS THE PARTY?'}
+  if (hours === 4) {tagline = ', GO THE FUCK TO SLEEP!'}
+  if (hours === 5) {tagline = 'DUDE, HOW ARE THE DRUGS?'}
+  if (hours === 6) {tagline = ', WHY ARE YOU AWAKE?'}
+  if (hours === 7) {tagline = ', SMELL THE COFFEE.'}
+  if (hours === 8) {tagline = ', HURRY UP, GET TO WORK!'}
+  if (hours === 9) {tagline = '& YES YOU ARE AT WORK.'}
+  if (hours === 10) {tagline = ', LOOK BUSY.'}
+  if (hours === 11) {tagline = ', NOT LONG TIL LUNCH.'}
+  if (hours === 12) {tagline = ', TIME FOR MUNCHIES.'}
+  if (hours === 13) {tagline = ', 4 HOURS TO GO.'}
+  if (hours === 14) {tagline = ', 3 HOURS TO GO.'}
+  if (hours === 15) {tagline = ', 2 HOURS TO GO.'}
+  if (hours === 16) {tagline = ', 1 HOUR TO GO.'}
+  if (hours === 16 && mins === 20) {
+    result = 'FOUR TWENTY!'
+    tagline = ' SPARK IT.';
+  }
+  if (hours === 17) {tagline = ', GET OUTTA THERE!'}
+  if (hours === 18) {tagline = ', WELCOME HOME.'}
+  if (hours === 19) {tagline = ', ANY FOOTBALL ON?'}
+  if (hours === 20) {tagline = ', GET THE KETTLE ON.'}
+  if (hours === 21) {tagline = ', MORE TEA... MORE TEA!!'}
+  if (hours === 22) {tagline = ', PLAYING FIFA?'}
+  if (hours === 23) {tagline = ', BEDTIME?.'}
+
+  $("#face").text(result);
+  $("#face").append(tagline);
+
+}
+updateTime();
+window.setInterval(function () {
+    updateTime();
+}, 1000);
+
+function resizeText() {
+  var width = $(window).width();
+    if (width > 768) {
+      $('#face').fitText(0.9);
+    } else {
+      $('#face').fitText(0.7);
     }
 }
-
-var name = $.urlParam('name');
-name = name.replace(/%20/g, " ");
-console.log(name);
-
-var sentance = [
-  "You complete and utter",
-  "You're a total",
-  "You absolute",
-  "Fuck off you",
-  "you're simply a",
-  "is a massive"
-];
-
-var insults = [
-  "cunt",
-  "wanker",
-  "slag",
-  "shit",
-  "fucker",
-  "bitch",
-  "twat",
-  "cock monkey",
-  "jizz guzzler",
-  "pugfaced nob",
-  "cum pocket",
-  "dick jockey",
-  "pig nut",
-  "prick"
-
-];
-
-function randomFrom(array) {
-  return array[Math.floor(Math.random() * array.length)];
-}
-
-$('.name').text(name);
-
-var randSentance = randomFrom(sentance);
-$('.sentance').text(randSentance);
-
-var randInsult = randomFrom(insults);
-$('.insult').text(randInsult);
-
-var voice = 'http://translate.google.com/translate_tts?tl=en&q=' + name + '%20' + randSentance + '%20' + randInsult
-$('.voice').attr('href', voice);
-
-var speak = name + ' ' + randSentance + '' + randInsult;
-
-$(document).ready(function() {
-  setTimeout(function() {
-    var msg = new SpeechSynthesisUtterance(speak);
-    var voices = window.speechSynthesis.getVoices();
-
-    console.log(voices);
-
-    msg.voice = voices.filter(function(voice) { return voice.name == 'Ralph'; })[0];
-    speechSynthesis.speak(msg);
-  },500);
+resizeText();
+$(window).resize(function() {
+    resizeText();
 });
