@@ -76,7 +76,7 @@ function updateTime() {
   if (hours === 20) {tagline = ', GET THE KETTLE ON.'}
   if (hours === 21) {tagline = ', MORE TEA... MORE TEA!!'}
   if (hours === 22) {tagline = ', PLAYING FIFA?'}
-  if (hours === 23) {tagline = ', BEDTIME?.'}
+  if (hours === 23) {tagline = ', BEDTIME?'}
 
   $("#face").text(result);
   $("#face").append(tagline);
