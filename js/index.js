@@ -124,4 +124,4 @@ var hourRotationTo = hourRotation + 360;
 
 var littleHand = $('#littleHand');
 TweenMax.set(littleHand,{transformOrigin: '50% 99%', rotation: hourRotation})
-TweenMax.to(littleHand,216000,{rotation:360, ease: Power0.easeNone, repeat:-1})
+TweenMax.to(littleHand,3600,{rotation:360, ease: Power0.easeNone, repeat:-1})
