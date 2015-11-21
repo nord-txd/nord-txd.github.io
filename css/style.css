@@ -1,26 +1,29 @@
 body {
   font-family: 'Roboto', sans-serif;
-  color: #414141;
+  color: #ffccb3;
   text-align: center;
-  background: #111;
+  background: #ff5500;
   background-size: cover;
   padding: 100px;
   overflow: hidden;
+  font-size: 22px;
 }
 @media (max-width: 768px) {
   body {
     padding: 20px;
   }
 }
+body a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  position: relative;
+  top: 30px;
+}
 
 #face {
-  font-size: 172px;
-  background: url(https://c1.staticflickr.com/5/4107/5412347913_88fc08488b_b.jpg) no-repeat;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: cover;
-  text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);
   z-index: 50;
+  font-weight: 100;
 }
 
 #bigHand, #secHand {
@@ -33,7 +36,7 @@ body {
   display: block;
   width: 10px;
   height: 51vh;
-  background: #191919;
+  background: #ff7029;
   border-radius: 10px;
   z-index: -2;
 }
@@ -52,7 +55,7 @@ body {
   display: block;
   width: 14px;
   height: 31vh;
-  background: #191919;
+  background: #ff7029;
   border-radius: 14px;
   z-index: -3;
 }

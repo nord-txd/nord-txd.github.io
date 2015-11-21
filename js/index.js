@@ -101,9 +101,9 @@ window.setInterval(function () {
 function resizeText() {
   var width = $(window).width();
     if (width > 768) {
-      $('#face').fitText(0.9);
+      $('#face').fitText(1.2);
     } else {
-      $('#face').fitText(0.7);
+      $('#face').fitText(0.9);
     }
 }
 resizeText();

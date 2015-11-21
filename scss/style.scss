@@ -1,24 +1,29 @@
-$primary: #676767;
+$primary: #ff5500;
+$darker: darken($primary,20%);
+$lighter: lighten($primary,8%);
 body {
   font-family: 'Roboto', sans-serif;
-  color: darken($primary,15%);
+  color: lighten($primary,35%);
   text-align: center;
-  background: #111;
+  background: $primary;
   background-size: cover;
   padding: 100px;
   overflow: hidden;
+  font-size: 22px; 
   @media (max-width: 768px) {
     padding: 20px;
   }
+  a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    position: relative;
+    top: 30px;
+  }
 }
 #face {
-  font-size: 172px;
-  background: url(https://c1.staticflickr.com/5/4107/5412347913_88fc08488b_b.jpg) no-repeat;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: cover;
-  text-shadow: 2px 2px 15px rgba(0,0,0,0.6);
   z-index: 50;
+  font-weight: 100;
 }
 #bigHand, #secHand {
   position: absolute;
@@ -28,7 +33,7 @@ body {
   display: block;
   width: 10px;
   height: 51vh;
-  background: #191919;
+  background: $lighter;
   border-radius: 10px;
   z-index: -2;
 }
@@ -43,7 +48,7 @@ body {
   display: block;
   width: 14px;
   height: 31vh;
-  background: #191919;
+  background: $lighter;
   border-radius: 14px;
   z-index: -3;
 }
