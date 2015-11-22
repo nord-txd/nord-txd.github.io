@@ -37,7 +37,8 @@ function updateTime() {
   var result = "IT'S";
   
   if (mins >= 0 && mins <= 4) {result += pastHour + " O'CLOCK"}
-   if (mins <= 4 && hours === 0) {result = "IT'S" + pastHour}
+  if (mins <= 4 && hours === 0) {result = "IT'S" + pastHour}
+  if (mins <= 4 && hours === 12) {result = "IT'S MIDDAY"}
   if (mins > 4 && mins <= 9) {result += " 5 PAST" + pastHour}
   if (mins > 9 && mins <= 14) {result += " TEN PAST" + pastHour}
   if (mins > 14 && mins <= 19) {result += " QUARTER PAST" + pastHour}
