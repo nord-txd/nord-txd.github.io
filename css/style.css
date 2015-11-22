@@ -20,7 +20,6 @@ body a {
   position: absolute;
   bottom: 25vh;
   text-transform: uppercase;
-  background: #FFEE9C;
   display: inline-block;
   -webkit-transform: translate(-50%);
       -ms-transform: translate(-50%);
@@ -88,7 +87,7 @@ body a {
 .middle {
   width: 25px;
   height: 25px;
-  border-radius: 25px;
+  border-radius: 50px;
   background: #6245bf;
   z-index: -1;
 }
