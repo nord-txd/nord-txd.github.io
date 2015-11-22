@@ -37,6 +37,7 @@ function updateTime() {
   var result = "IT'S";
   
   if (mins >= 0 && mins <= 4) {result += pastHour + " O'CLOCK"}
+   if (mins <= 4 && hours === 0) {result = "IT'S" + pastHour}
   if (mins > 4 && mins <= 9) {result += " 5 PAST" + pastHour}
   if (mins > 9 && mins <= 14) {result += " TEN PAST" + pastHour}
   if (mins > 14 && mins <= 19) {result += " QUARTER PAST" + pastHour}
@@ -53,12 +54,12 @@ function updateTime() {
   if (hours === 1) {tagline = ', YOU SHOULD PROBABLY SLEEP.'}
   if (hours === 2) {tagline = ', SERIOUSLY, WHY ARE YOU STILL AWAKE.'}
   if (hours === 3) {tagline = ', HOW WAS THE PARTY?'}
-  if (hours === 4) {tagline = ', GO THE FUCK TO SLEEP!'}
-  if (hours === 5) {tagline = 'DUDE, HOW ARE THE DRUGS?'}
+  if (hours === 4) {tagline = ' SO GO THE FUCK TO SLEEP!'}
+  if (hours === 5) {tagline = ' DUDE, HOW ARE THE DRUGS?'}
   if (hours === 6) {tagline = ', WHY ARE YOU AWAKE?'}
   if (hours === 7) {tagline = ', SMELL THE COFFEE.'}
   if (hours === 8) {tagline = ', HURRY UP, GET TO WORK!'}
-  if (hours === 9) {tagline = '& YES YOU ARE AT WORK.'}
+  if (hours === 9) {tagline = ' & YES YOU ARE AT WORK.'}
   if (hours === 10) {tagline = ', LOOK BUSY.'}
   if (hours === 11) {tagline = ', NOT LONG TIL LUNCH.'}
   if (hours === 12) {tagline = ', TIME FOR MUNCHIES.'}
@@ -79,49 +80,36 @@ function updateTime() {
   if (hours === 23) {tagline = ', BEDTIME?'}
 
   $("#face").text(result);
-  $("#face").append(tagline);
+  // $("#face").append(tagline);
   
   var minsRotation = (mins / 60) * 360;
   var secsRotation = (secs / 60) * 360;
+  var singleHour = hours;
+  if (hours > 12) {
+    singleHour = hours - 12;
+  }
+  var hourRotation = (singleHour / 12) * 360 + (minsRotation / 12);
+  var hourRotationTo = hourRotation + 360;
+
+  var littleHand = $('#littleHand');
+  TweenMax.set(littleHand,{transformOrigin: '50% 100%', rotation: hourRotation})
+  TweenMax.to(littleHand,0.3,{rotation:hourRotation, ease: Power0.easeNone, repeat:-1})
 
   var bigHand = $('#bigHand');
-  TweenMax.set(bigHand,{transformOrigin: '50% 99%'})
+  TweenMax.set(bigHand,{transformOrigin: '50% 100%'})
   TweenMax.to(bigHand,0.3,{rotation:minsRotation, ease: Power0.easeNone})
   
   var secHand = $('#secHand');
-  TweenMax.set(secHand,{transformOrigin: '50% 99%'})
-  TweenMax.to(secHand,0,{rotation:secsRotation, ease: Power0.easeNone})
+  TweenMax.set(secHand,{transformOrigin: '50% 100%'})
+  if (secs === 0) {
+    secsRotation = 360;
+    TweenMax.to(secHand,0.1,{rotation:secsRotation, ease: Power0.easeNone})
+    TweenMax.to(secHand,0,{rotation:0, ease: Power0.easeNone, delay:0.2})
+  }
+  TweenMax.to(secHand,0.1,{rotation:secsRotation, ease: Power0.easeNone})
 
 }
 updateTime();
 window.setInterval(function () {
     updateTime();
 }, 1000);
-
-function resizeText() {
-  var width = $(window).width();
-    if (width > 768) {
-      $('#face').fitText(1.2);
-    } else {
-      $('#face').fitText(0.9);
-    }
-}
-resizeText();
-$(window).resize(function() {
-    resizeText();
-});
-
-var dt = new Date();
-var hours = dt.getHours(),
-    mins = dt.getMinutes();
-
-var singleHour = hours;
-if (hours > 12) {
-  singleHour = hours - 12;
-}
-var hourRotation = (singleHour / 12) * 360;
-var hourRotationTo = hourRotation + 360;
-
-var littleHand = $('#littleHand');
-TweenMax.set(littleHand,{transformOrigin: '50% 99%', rotation: hourRotation})
-TweenMax.to(littleHand,3600,{rotation:360, ease: Power0.easeNone, repeat:-1})

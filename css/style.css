@@ -1,10 +1,10 @@
 body {
   font-family: 'Roboto', sans-serif;
-  color: #ffccb3;
+  color: #818c9b;
   text-align: center;
-  background: #ff5500;
+  background: #2F343B;
   background-size: cover;
-  padding: 100px;
+  padding: 10vh;
   overflow: hidden;
   font-size: 22px;
 }
@@ -14,16 +14,26 @@ body {
   }
 }
 body a {
-  color: #fff;
+  color: #687382;
   text-decoration: none;
-  font-size: 16px;
-  position: relative;
-  top: 30px;
+  font-size: 14px;
+  position: absolute;
+  bottom: 25vh;
+  left: 0;
+  right: 0;
+  width: 100%;
+  text-transform: uppercase;
 }
 
 #face {
   z-index: 50;
   font-weight: 100;
+  font-size: 28px;
+  position: absolute;
+  bottom: 30vh;
+  left: 0;
+  right: 0;
+  text-align: center;
 }
 
 #bigHand, #secHand {
@@ -35,14 +45,14 @@ body a {
           transform: translate(-50%, 0);
   display: block;
   width: 10px;
-  height: 51vh;
-  background: #ff7029;
+  height: 50vh;
+  background: #414852;
   border-radius: 10px;
   z-index: -2;
 }
 
 #secHand {
-  width: 5px;
+  width: 3px;
 }
 
 #littleHand {
@@ -54,8 +64,33 @@ body a {
           transform: translate(-50%, 0);
   display: block;
   width: 14px;
-  height: 31vh;
-  background: #ff7029;
+  height: 30vh;
+  background: #414852;
   border-radius: 14px;
   z-index: -3;
+}
+
+.centered, .middle, .middle::before {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.middle {
+  width: 25px;
+  height: 25px;
+  border-radius: 25px;
+  background: #414852;
+  z-index: -1;
+}
+.middle::before {
+  content: '';
+  background: #414852;
+  width: 90vh;
+  height: 90vh;
+  border-radius: 90vh;
+  opacity: 0.2;
 }

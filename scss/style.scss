@@ -1,5 +1,5 @@
-$primary: #ff5500;
-$darker: darken($primary,20%);
+$primary: #2F343B;
+$darker: darken($primary,10%);
 $lighter: lighten($primary,8%);
 body {
   font-family: 'Roboto', sans-serif;
@@ -7,23 +7,34 @@ body {
   text-align: center;
   background: $primary;
   background-size: cover;
-  padding: 100px;
+  padding: 10vh;
   overflow: hidden;
   font-size: 22px; 
   @media (max-width: 768px) {
     padding: 20px;
   }
   a {
-    color: #fff;
+    color: lighten($primary,25%);
+    // color: $darker;
     text-decoration: none;
-    font-size: 16px;
-    position: relative;
-    top: 30px;
+    font-size: 14px;
+    position: absolute;
+    bottom: 25vh;
+    left: 0;
+    right: 0;
+    width: 100%;
+    text-transform: uppercase;
   }
 }
 #face {
   z-index: 50;
   font-weight: 100;
+  font-size: 28px;
+  position: absolute;
+  bottom: 30vh;
+  left: 0;
+  right: 0;
+  text-align: center;
 }
 #bigHand, #secHand {
   position: absolute;
@@ -32,13 +43,13 @@ body {
   transform:translate(-50%,0);
   display: block;
   width: 10px;
-  height: 51vh;
+  height: 50vh;
   background: $lighter;
   border-radius: 10px;
   z-index: -2;
 }
 #secHand {
-  width: 5px;
+  width: 3px;
 }
 #littleHand {
   position: absolute;
@@ -47,8 +58,31 @@ body {
   transform:translate(-50%,0);
   display: block;
   width: 14px;
-  height: 31vh;
+  height: 30vh;
   background: $lighter;
   border-radius: 14px;
   z-index: -3;
+}
+.centered {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.middle, {
+  @extend .centered;
+  width: 25px;
+  height: 25px;
+  border-radius: 25px;
+  background: $lighter;
+  z-index: -1;
+  &::before {
+    content: '';
+    background: $lighter;
+    width: 90vh;
+    height: 90vh;
+    border-radius: 90vh;
+    @extend .centered;
+    opacity: 0.2;
+  }  
 }
