@@ -1,3 +1,20 @@
+function shadeColor(color, percent) {   
+    var f=parseInt(color.slice(1),16),t=percent<0?0:255,p=percent<0?percent*-1:percent,R=f>>16,G=f>>8&0x00FF,B=f&0x0000FF;
+    return "#"+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B)).toString(16).slice(1);
+}
+
+function blendColors(c0, c1, p) {
+    var f=parseInt(c0.slice(1),16),t=parseInt(c1.slice(1),16),R1=f>>16,G1=f>>8&0x00FF,B1=f&0x0000FF,R2=t>>16,G2=t>>8&0x00FF,B2=t&0x0000FF;
+    return "#"+(0x1000000+(Math.round((R2-R1)*p)+R1)*0x10000+(Math.round((G2-G1)*p)+G1)*0x100+(Math.round((B2-B1)*p)+B1)).toString(16).slice(1);
+}
+
+function setBackground(color) {
+  color   = '#'+color;
+  var shaded = blendColors(color, '#ffffff');
+  $('body').css('background-color', color);
+  $('.clockHand').css('background-color', shaded);
+
+}
 function updateTime() {
   var dt = new Date();
   var hours = dt.getHours(),
@@ -6,18 +23,54 @@ function updateTime() {
   
   var toHour = '';
   if (hours == 0) {toHour = ' ONE'}
-  if (hours == 1 || hours == 13) {toHour = ' TWO'}
-  if (hours == 2 || hours == 14) {toHour = ' THREE'}
-  if (hours == 3 || hours == 15) {toHour = ' FOUR'}
-  if (hours == 4 || hours == 16) {toHour = ' FIVE'}
-  if (hours == 5 || hours == 17) {toHour = ' SIX'}
-  if (hours == 6 || hours == 18) {toHour = ' SEVEN'}
-  if (hours == 7 || hours == 19) {toHour = ' EIGHT'}
-  if (hours == 8 || hours == 20) {toHour = ' NINE'}
-  if (hours == 9 || hours == 21) {toHour = ' TEN'}
-  if (hours == 10 || hours == 22) {toHour = ' ELEVEN'} 
-  if (hours == 11 || hours == 23) {toHour = ' TWELVE'}
-  if (hours == 12) {toHour = ' ONE'}
+  if (hours == 1 || hours == 13) {
+    toHour = ' TWO';
+    setBackground('b4da55');
+  }
+  if (hours == 2 || hours == 14) {
+    toHour = ' THREE';
+    setBackground('b4da55');
+  }
+  if (hours == 3 || hours == 15) {
+    toHour = ' FOUR';
+    setBackground('b4da55');
+  }
+  if (hours == 4 || hours == 16) {
+    toHour = ' FIVE';
+    setBackground('b4da55');
+  }
+  if (hours == 5 || hours == 17) {
+    toHour = ' SIX';
+    setBackground('b4da55');
+  }
+  if (hours == 6 || hours == 18) {
+    toHour = ' SEVEN';
+    setBackground('b4da55');
+  }
+  if (hours == 7 || hours == 19) {
+    toHour = ' EIGHT';
+    setBackground('b4da55');
+  }
+  if (hours == 8 || hours == 20) {
+    toHour = ' NINE';
+    setBackground('b4da55');
+  }
+  if (hours == 9 || hours == 21) {
+    toHour = ' TEN';
+    setBackground('b4da55');
+  }
+  if (hours == 10 || hours == 22) {
+    toHour = ' ELEVEN';
+    setBackground('b4da55');
+  } 
+  if (hours == 11 || hours == 23) {
+    toHour = ' TWELVE';
+    setBackground('b4da55');
+  }
+  if (hours == 12) {
+    toHour = ' ONE';
+    setBackground('b4da55');
+  }
 
   var pastHour = '';
   if (hours == 0) {pastHour = ' MIDNIGHT'}
@@ -37,8 +90,7 @@ function updateTime() {
   var result = "IT'S";
   
   if (mins >= 0 && mins <= 4) {result += pastHour + " O'CLOCK"}
-  if (mins <= 4 && hours === 0) {result = "IT'S" + pastHour}
-  if (mins <= 4 && hours === 12) {result = "IT'S MIDDAY"}
+   if (mins <= 4 && hours === 0) {result = "IT'S" + pastHour}
   if (mins > 4 && mins <= 9) {result += " 5 PAST" + pastHour}
   if (mins > 9 && mins <= 14) {result += " TEN PAST" + pastHour}
   if (mins > 14 && mins <= 19) {result += " QUARTER PAST" + pastHour}
@@ -81,7 +133,7 @@ function updateTime() {
   if (hours === 23) {tagline = ', BEDTIME?'}
 
   $("#face").text(result);
-  // $("#face").append(tagline);
+  $("#face").append(tagline);
   
   var minsRotation = (mins / 60) * 360;
   var secsRotation = (secs / 60) * 360;
@@ -110,7 +162,6 @@ function updateTime() {
   TweenMax.to(secHand,0.1,{rotation:secsRotation, ease: Power0.easeNone})
 
 }
-updateTime();
 window.setInterval(function () {
     updateTime();
 }, 1000);

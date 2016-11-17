@@ -1,57 +1,67 @@
 body {
-  font-family: 'Roboto', sans-serif;
-  color: #442F89;
+  font-family: 'Helvetica', Arial, sans-serif;
+  color: #333;
   text-align: center;
-  background: #442F89;
+  background: #8FB1C1;
   background-size: cover;
-  padding: 10vh;
   overflow: hidden;
   font-size: 22px;
 }
-@media (max-width: 768px) {
-  body {
-    padding: 20px;
-  }
-}
 body a {
-  color: #442F89;
+  color: #8FB1C1;
   text-decoration: none;
   font-size: 14px;
   position: absolute;
-  bottom: 20vh;
+  bottom: 25vh;
   text-transform: uppercase;
   display: inline-block;
   -webkit-transform: translate(-50%);
-      -ms-transform: translate(-50%);
           transform: translate(-50%);
   padding: 5px 15px;
 }
 
 #face {
   z-index: 50;
-  font-weight: 300;
-  font-size: 28px;
+  font-weight: 700;
+  font-size: 50px;
   position: absolute;
-  top: 20vh;
-  text-align: center;
+  bottom: 10vh;
+  left: 50%;
+  width: 50vh;
+  text-align: left;
   display: inline-block;
+  text-transform: lowercase;
+  padding: 20px 0;
+  border-bottom: 10px solid #333;
+  letter-spacing: -0.07em;
   -webkit-transform: translate(-50%);
-      -ms-transform: translate(-50%);
           transform: translate(-50%);
-  padding: 5px 15px;
+}
+
+#web-link a {
+  color: #333;
+  top: 30px;
+  right: 30px;
+  font-size: 14px;
+  position: absolute;
+  font-weight: 700;
+  text-align: left;
+  display: inline-block;
+}
+#web-link a:hover {
+  text-decoration: underline;
 }
 
 #bigHand, #secHand {
   position: absolute;
-  top: 0;
+  top: 20vh;
   left: 50%;
   -webkit-transform: translate(-50%, 0);
-      -ms-transform: translate(-50%, 0);
           transform: translate(-50%, 0);
   display: block;
   width: 10px;
-  height: 50vh;
-  background: #6245bf;
+  height: 30vh;
+  background: #b0c8d3;
   border-radius: 10px;
   z-index: -2;
 }
@@ -62,15 +72,14 @@ body a {
 
 #littleHand {
   position: absolute;
-  top: 20vh;
+  top: 30vh;
   left: 50%;
   -webkit-transform: translate(-50%, 0);
-      -ms-transform: translate(-50%, 0);
           transform: translate(-50%, 0);
   display: block;
   width: 14px;
-  height: 30vh;
-  background: #6245bf;
+  height: 20vh;
+  background: #b0c8d3;
   border-radius: 14px;
   z-index: -3;
 }
@@ -80,15 +89,15 @@ body a {
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
 }
 
 .middle {
-  width: 25px;
-  height: 25px;
-  border-radius: 50px;
-  background: #6245bf;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  background: #b0c8d3;
   z-index: -1;
 }
 
@@ -99,5 +108,5 @@ body a {
   height: 90vh;
   border-radius: 90vh;
   z-index: -20;
-  box-shadow: 10px 10px 0 #312263;
+  box-shadow: 10px 10px 0 #6e9aaf;
 }

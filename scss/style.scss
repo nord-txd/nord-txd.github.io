@@ -1,27 +1,21 @@
-$primary: #442F89;
+$primary: #8FB1C1;
 $darker: darken($primary,10%);
-$lighter: lighten($primary,15%);
+$lighter: lighten($primary,10%);
 body {
-  font-family: 'Roboto', sans-serif;
-  color: $primary;
+  font-family: 'Helvetica', Arial, sans-serif;
+  color: #333;
   text-align: center;
   background: $primary;
   background-size: cover;
-  padding: 10vh;
   overflow: hidden;
   font-size: 22px; 
-  @media (max-width: 768px) {
-    padding: 20px;
-  }
   a {
     color: $primary;
-    // color: $darker;
     text-decoration: none;
     font-size: 14px;
     position: absolute;
     bottom: 25vh;
     text-transform: uppercase;
-    background: #FFEE9C;
     display: inline-block;
     transform: translate(-50%);
     padding: 5px 15px;
@@ -29,24 +23,41 @@ body {
 }
 #face {
   z-index: 50;
-  font-weight: 300;
-  font-size: 28px;
+  font-weight: 700;
+  font-size: 50px;
   position: absolute;
-  bottom: 30vh;
-  text-align: center;
-  background: #FFEE9C;
+  bottom: 10vh;
+  left: 50%;
+  width: 50vh;
+  text-align: left;
   display: inline-block;
+  text-transform: lowercase;
+  padding: 20px 0;
+  border-bottom: 10px solid #333;
+  letter-spacing: -0.07em;
   transform: translate(-50%);
-  padding: 5px 15px;
+}
+#web-link a {
+  color: #333;
+  top: 30px;
+  right: 30px;
+  font-size: 14px;
+  position: absolute;
+  font-weight: 700;
+  text-align: left;
+  display: inline-block;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 #bigHand, #secHand {
   position: absolute;
-  top:0;
+  top:20vh;
   left: 50%;
   transform:translate(-50%,0);
   display: block;
   width: 10px;
-  height: 50vh;
+  height: 30vh;
   background: $lighter;
   border-radius: 10px;
   z-index: -2;
@@ -56,12 +67,12 @@ body {
 }
 #littleHand {
   position: absolute;
-  top:20vh;
+  top:30vh;
   left: 50%;
   transform:translate(-50%,0);
   display: block;
   width: 14px;
-  height: 30vh;
+  height: 20vh;
   background: $lighter;
   border-radius: 14px;
   z-index: -3;
@@ -74,9 +85,10 @@ body {
 }
 .middle, {
   @extend .centered;
-  width: 25px;
-  height: 25px;
-  border-radius: 25px;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
   background: $lighter;
   z-index: -1;
 }
